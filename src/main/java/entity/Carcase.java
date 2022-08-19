@@ -9,4 +9,15 @@ public class Carcase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "type")
+    private String type;
+
+    @Column(name = "color")
+    private String color;
+
+    @Column(name = "doorCount")
+    private Integer doorCount;
+
+    @Column(name = "VIN")
+    private Integer VIN;
 }
