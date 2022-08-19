@@ -9,4 +9,10 @@ public class Transmission {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "type")
+    private String type;
+
+    @Column(name = "serialNumber")
+    private Integer serialNumber;
 }
