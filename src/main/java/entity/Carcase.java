@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Table(name = "carcases")
 public class Carcase {
     @Id
-    @Column(name = "id")
+    @Column(name = "carcase_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
