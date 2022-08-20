@@ -11,5 +11,7 @@ public interface AbstractDao {
 
     void addDao(Object object) throws SQLException;
 
+    void updateDao(Object object) throws SQLException;
+
     void deleteByIdDao(Integer id) throws SQLException;
 }

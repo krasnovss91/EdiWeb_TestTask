@@ -30,6 +30,11 @@ public class CarDao implements AbstractDao {
     }
 
     @Override
+    public void updateDao(Object object) throws SQLException {
+
+    }
+
+    @Override
     public void deleteByIdDao(Integer id) throws SQLException {
 
     }
