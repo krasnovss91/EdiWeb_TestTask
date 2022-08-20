@@ -1,11 +1,19 @@
 package dao.impl;
 
 import dao.AbstractDao;
+import org.hibernate.SessionFactory;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class CarcaseDao implements AbstractDao {
+
+    private SessionFactory sessionFactory;
+
+    public CarcaseDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public List<Object> getAllDao() {
         return null;

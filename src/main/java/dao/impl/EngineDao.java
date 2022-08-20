@@ -1,11 +1,19 @@
 package dao.impl;
 
 import dao.AbstractDao;
+import org.hibernate.SessionFactory;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class EngineDao implements AbstractDao {
+
+    private SessionFactory sessionFactory;
+
+    public EngineDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public List<Object> getAllDao() {
         return null;

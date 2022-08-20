@@ -1,11 +1,19 @@
 package dao.impl;
 
 import dao.AbstractDao;
+import org.hibernate.SessionFactory;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class TransmissionDao implements AbstractDao {
+
+    private SessionFactory sessionFactory;
+
+    public TransmissionDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public List<Object> getAllDao() {
         return null;
