@@ -10,12 +10,15 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne
+    @OneToOne(optional=false, cascade=CascadeType.ALL)
+    @JoinColumn(name = "carcase_id")
     private Carcase carcase;
 
-    @OneToOne
+    @OneToOne(optional=false, cascade=CascadeType.ALL)
+    @JoinColumn(name = "engine_id")
     private Engine engine;
 
-    @OneToOne
+    @OneToOne(optional=false, cascade=CascadeType.ALL)
+    @JoinColumn(name = "transmission_id")
     private Transmission transmission;
 }
