@@ -1,10 +1,7 @@
 package dao;
 
 import entity.Transmission;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -34,8 +31,22 @@ public class TransmissionDao {
     }
 
 
-    public Transmission getByIdDao(Integer id) throws SQLException {
-        return null;
+    public Transmission getByIdDao(Integer id) throws HibernateException {
+        Session session = null;
+        Query query;
+        List<Transmission> transmissionList;
+        Transmission transmission = null;
+        try {
+            session = sessionFactory.openSession();
+            query = session.createQuery("from Transmission where id =:transmissionId");
+            transmissionList = query.setParameter("transmissionId", id).list();
+            transmission = transmissionList.get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return transmission;
     }
 
 

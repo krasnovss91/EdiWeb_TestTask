@@ -1,10 +1,7 @@
 package dao;
 
 import entity.Engine;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -33,8 +30,22 @@ public class EngineDao {
 
     }
 
-    public Engine getByIdDao(Integer id) throws SQLException {
-        return null;
+    public Engine getByIdDao(Integer id) throws HibernateException {
+        Session session = null;
+        Query query;
+        List<Engine> engineList;
+        Engine engine = null;
+        try {
+            session = sessionFactory.openSession();
+            query = session.createQuery("from Engine where id =:engineId");
+            engineList = query.setParameter("engineId",id).list();
+            engine = engineList.get(0);
+        } catch (HibernateException e){
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return engine;
     }
 
     public void addDao(Engine engine) throws HibernateException {

@@ -1,10 +1,7 @@
 package dao;
 
 import entity.Carcase;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -33,8 +30,22 @@ public class CarcaseDao {
         return allCarcases;
     }
 
-    public Carcase getByIdDao(Integer id) throws SQLException {
-        return null;
+    public Carcase getByIdDao(Integer id) throws HibernateException {
+        Session session = null;
+        Query query;
+        List<Carcase> carcaseList;
+        Carcase carcase = null;
+        try {
+            session = sessionFactory.openSession();
+            query = session.createQuery("from Carcase where id =:carcaseId");
+            carcaseList = query.setParameter("carcaseList", id).list();
+            carcase = carcaseList.get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return carcase;
     }
 
     public void addDao(Carcase carcase) throws HibernateException {
