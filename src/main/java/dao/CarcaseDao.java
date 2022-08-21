@@ -4,6 +4,7 @@ import entity.Carcase;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -36,8 +37,17 @@ public class CarcaseDao {
         return null;
     }
 
-    public void addDao(Carcase carcase) throws SQLException {
-
+    public void addDao(Carcase carcase) throws HibernateException {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.save(carcase);
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 
     public void updateDao(Carcase carcase) throws SQLException {

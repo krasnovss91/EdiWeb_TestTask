@@ -4,6 +4,7 @@ import entity.Car;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -36,8 +37,17 @@ public class CarDao {
         return null;
     }
 
-    public void addDao(Car car) throws SQLException {
-
+    public void addDao(Car car) throws HibernateException {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.save(car);
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 
     public void updateDao(Car car) throws SQLException {

@@ -4,6 +4,7 @@ import entity.Transmission;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -38,8 +39,17 @@ public class TransmissionDao {
     }
 
 
-    public void addDao(Transmission transmission) throws SQLException {
-
+    public void addDao(Transmission transmission) throws HibernateException {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.save(transmission);
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 
 

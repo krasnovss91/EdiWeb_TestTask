@@ -4,6 +4,7 @@ import entity.Engine;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -36,8 +37,17 @@ public class EngineDao {
         return null;
     }
 
-    public void addDao(Engine engine) throws SQLException {
-
+    public void addDao(Engine engine) throws HibernateException {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.save(engine);
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 
     public void updateDao(Engine engine) throws SQLException {
