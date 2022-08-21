@@ -1,12 +1,12 @@
-package dao.impl;
+package dao;
 
-import dao.AbstractDao;
+import entity.Carcase;
 import org.hibernate.SessionFactory;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class CarcaseDao implements AbstractDao {
+public class CarcaseDao {
 
     private SessionFactory sessionFactory;
 
@@ -14,27 +14,22 @@ public class CarcaseDao implements AbstractDao {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
-    public List<Object> getAllDao() {
+    public List<Carcase> getAllDao() {
         return null;
     }
 
-    @Override
-    public Object getByIdDao(Integer id) throws SQLException {
+    public Carcase getByIdDao(Integer id) throws SQLException {
         return null;
     }
 
-    @Override
-    public void addDao(Object object) throws SQLException {
+    public void addDao(Carcase carcase) throws SQLException {
 
     }
 
-    @Override
-    public void updateDao(Object object) throws SQLException {
+    public void updateDao(Carcase carcase) throws SQLException {
 
     }
 
-    @Override
     public void deleteByIdDao(Integer id) throws SQLException {
 
     }

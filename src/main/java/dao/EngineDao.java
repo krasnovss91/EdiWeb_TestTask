@@ -1,12 +1,12 @@
-package dao.impl;
+package dao;
 
-import dao.AbstractDao;
+import entity.Engine;
 import org.hibernate.SessionFactory;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class EngineDao implements AbstractDao {
+public class EngineDao {
 
     private SessionFactory sessionFactory;
 
@@ -14,27 +14,22 @@ public class EngineDao implements AbstractDao {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
-    public List<Object> getAllDao() {
+    public List<Engine> getAllDao() {
         return null;
     }
 
-    @Override
-    public Object getByIdDao(Integer id) throws SQLException {
+    public Engine getByIdDao(Integer id) throws SQLException {
         return null;
     }
 
-    @Override
-    public void addDao(Object object) throws SQLException {
+    public void addDao(Engine engine) throws SQLException {
 
     }
 
-    @Override
-    public void updateDao(Object object) throws SQLException {
+    public void updateDao(Engine engine) throws SQLException {
 
     }
 
-    @Override
     public void deleteByIdDao(Integer id) throws SQLException {
 
     }

@@ -1,12 +1,12 @@
-package dao.impl;
+package dao;
 
-import dao.AbstractDao;
+import entity.Transmission;
 import org.hibernate.SessionFactory;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class TransmissionDao implements AbstractDao {
+public class TransmissionDao  {
 
     private SessionFactory sessionFactory;
 
@@ -14,27 +14,27 @@ public class TransmissionDao implements AbstractDao {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
-    public List<Object> getAllDao() {
+
+    public List<Transmission> getAllDao() {
         return null;
     }
 
-    @Override
-    public Object getByIdDao(Integer id) throws SQLException {
+
+    public Transmission getByIdDao(Integer id) throws SQLException {
         return null;
     }
 
-    @Override
-    public void addDao(Object object) throws SQLException {
+
+    public void addDao(Transmission transmission) throws SQLException {
 
     }
 
-    @Override
-    public void updateDao(Object object) throws SQLException {
+
+    public void updateDao(Transmission transmission) throws SQLException {
 
     }
 
-    @Override
+
     public void deleteByIdDao(Integer id) throws SQLException {
 
     }
