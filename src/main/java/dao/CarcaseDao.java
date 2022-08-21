@@ -61,8 +61,23 @@ public class CarcaseDao {
         }
     }
 
-    public void updateCarcaseDao(Carcase carcase) throws SQLException {
-
+    public void updateCarcaseDao(Carcase carcase) throws HibernateException {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.createQuery("UPDATE Carcase SET type=:type, color=:color, doorCount=:doorCount, VIN=:VIN WHERE id=:id")
+                    .setParameter("type", carcase.getType())
+                    .setParameter("color", carcase.getColor())
+                    .setParameter("doorCount", carcase.getDoorCount())
+                    .setParameter("VIN", carcase.getVIN())
+                    .setParameter("id", carcase.getId())
+                    .executeUpdate();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 
     public void deleteCarcaseByIdDao(Integer id) throws HibernateException {

@@ -64,8 +64,21 @@ public class TransmissionDao {
     }
 
 
-    public void updateTransmissionDao(Transmission transmission) throws SQLException {
-
+    public void updateTransmissionDao(Transmission transmission) throws HibernateException {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.createQuery("UPDATE Transmission SET type=:type, serialNumber=:serialNumber WHERE id=:id")
+                    .setParameter("type", transmission.getType())
+                    .setParameter("serialNumber", transmission.getSerialNumber())
+                    .setParameter("id", transmission.getId())
+                    .executeUpdate();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 
 

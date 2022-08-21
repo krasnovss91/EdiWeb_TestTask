@@ -61,8 +61,22 @@ public class CarDao {
         }
     }
 
-    public void updateCarDao(Car car) throws SQLException {
-
+    public void updateCarDao(Car car) throws HibernateException {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.createQuery("UPDATE Car SET carcase=:carcase, engine=:engine, transmission=:transmission WHERE id=:id")
+                    .setParameter("carcase", car.getCarcase())
+                    .setParameter("engine", car.getEngine())
+                    .setParameter("transmission", car.getTransmission())
+                    .setParameter("id", car.getId())
+                    .executeUpdate();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 
     public void deleteCarByIdDao(Integer id) throws HibernateException {

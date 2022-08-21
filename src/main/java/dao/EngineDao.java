@@ -61,8 +61,23 @@ public class EngineDao {
         }
     }
 
-    public void updateEngineDao(Engine engine) throws SQLException {
-
+    public void updateEngineDao(Engine engine) throws HibernateException {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.createQuery("UPDATE Engine SET type=:type, capacity=:capacity, power=:power, serialNumber=:serialNumber WHERE id=:id")
+                    .setParameter("type", engine.getType())
+                    .setParameter("capacity", engine.getCapacity())
+                    .setParameter("power", engine.getPower())
+                    .setParameter("serialNumber", engine.getSerialNumber())
+                    .setParameter("id", engine.getId())
+                    .executeUpdate();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 
     public void deleteEngineByIdDao(Integer id) throws HibernateException {
