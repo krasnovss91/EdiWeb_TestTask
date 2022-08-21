@@ -65,7 +65,18 @@ public class CarcaseDao {
 
     }
 
-    public void deleteByIdDao(Integer id) throws SQLException {
-
+    public void deleteByIdDao(Integer id) throws HibernateException {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            Query query = session.createQuery("DELETE FROM Carcase WHERE id =:carcaseId");
+            query.setParameter("carcaseId", id);
+            query.executeUpdate();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 }

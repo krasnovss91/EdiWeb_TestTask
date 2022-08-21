@@ -69,7 +69,18 @@ public class TransmissionDao {
     }
 
 
-    public void deleteByIdDao(Integer id) throws SQLException {
-
+    public void deleteByIdDao(Integer id) throws HibernateException {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            Query query = session.createQuery("DELETE FROM Transmission WHERE id =:transmissionId");
+            query.setParameter("transmissionId", id);
+            query.executeUpdate();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 }

@@ -38,9 +38,9 @@ public class EngineDao {
         try {
             session = sessionFactory.openSession();
             query = session.createQuery("from Engine where id =:engineId");
-            engineList = query.setParameter("engineId",id).list();
+            engineList = query.setParameter("engineId", id).list();
             engine = engineList.get(0);
-        } catch (HibernateException e){
+        } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
             session.close();
@@ -65,7 +65,18 @@ public class EngineDao {
 
     }
 
-    public void deleteByIdDao(Integer id) throws SQLException {
-
+    public void deleteByIdDao(Integer id) throws HibernateException {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            Query query = session.createQuery("DELETE FROM Engine WHERE id =:engineId");
+            query.setParameter("engineId", id);
+            query.executeUpdate();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 }

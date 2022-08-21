@@ -65,7 +65,18 @@ public class CarDao {
 
     }
 
-    public void deleteByIdDao(Integer id) throws SQLException {
-
+    public void deleteByIdDao(Integer id) throws HibernateException {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            Query query = session.createQuery("DELETE FROM Car WHERE id =: carId");
+            query.setParameter("carId", id);
+            query.executeUpdate();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
     }
 }
