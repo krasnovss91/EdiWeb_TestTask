@@ -14,7 +14,7 @@ public class CarDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<Car> getAllDao() throws HibernateException {
+    public List<Car> getAllCarDao() throws HibernateException {
         Session session = null;
         List<Car> allCars = null;
         try {
@@ -30,7 +30,7 @@ public class CarDao {
 
     }
 
-    public Car getByIdDao(Integer id) throws HibernateException {
+    public Car getCarByIdDao(Integer id) throws HibernateException {
         Session session = null;
         Query query;
         List<Car> carList;
@@ -48,7 +48,7 @@ public class CarDao {
         return car;
     }
 
-    public void addDao(Car car) throws HibernateException {
+    public void addCarDao(Car car) throws HibernateException {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -61,11 +61,11 @@ public class CarDao {
         }
     }
 
-    public void updateDao(Car car) throws SQLException {
+    public void updateCarDao(Car car) throws SQLException {
 
     }
 
-    public void deleteByIdDao(Integer id) throws HibernateException {
+    public void deleteCarByIdDao(Integer id) throws HibernateException {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {

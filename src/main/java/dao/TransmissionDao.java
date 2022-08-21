@@ -15,7 +15,7 @@ public class TransmissionDao {
     }
 
 
-    public List<Transmission> getAllDao() throws HibernateException {
+    public List<Transmission> getAllTransmissionsDao() throws HibernateException {
         Session session = null;
         List<Transmission> allTransmissions = null;
         try {
@@ -31,7 +31,7 @@ public class TransmissionDao {
     }
 
 
-    public Transmission getByIdDao(Integer id) throws HibernateException {
+    public Transmission getTransmissionByIdDao(Integer id) throws HibernateException {
         Session session = null;
         Query query;
         List<Transmission> transmissionList;
@@ -50,7 +50,7 @@ public class TransmissionDao {
     }
 
 
-    public void addDao(Transmission transmission) throws HibernateException {
+    public void addTransmissionDao(Transmission transmission) throws HibernateException {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -64,12 +64,12 @@ public class TransmissionDao {
     }
 
 
-    public void updateDao(Transmission transmission) throws SQLException {
+    public void updateTransmissionDao(Transmission transmission) throws SQLException {
 
     }
 
 
-    public void deleteByIdDao(Integer id) throws HibernateException {
+    public void deleteTransmissionByIdDao(Integer id) throws HibernateException {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {

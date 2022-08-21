@@ -14,7 +14,7 @@ public class EngineDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<Engine> getAllDao() throws HibernateException {
+    public List<Engine> getAllEnginesDao() throws HibernateException {
         Session session = null;
         List<Engine> allEngines = null;
         try {
@@ -30,7 +30,7 @@ public class EngineDao {
 
     }
 
-    public Engine getByIdDao(Integer id) throws HibernateException {
+    public Engine getEngineByIdDao(Integer id) throws HibernateException {
         Session session = null;
         Query query;
         List<Engine> engineList;
@@ -48,7 +48,7 @@ public class EngineDao {
         return engine;
     }
 
-    public void addDao(Engine engine) throws HibernateException {
+    public void addEngineDao(Engine engine) throws HibernateException {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -61,11 +61,11 @@ public class EngineDao {
         }
     }
 
-    public void updateDao(Engine engine) throws SQLException {
+    public void updateEngineDao(Engine engine) throws SQLException {
 
     }
 
-    public void deleteByIdDao(Integer id) throws HibernateException {
+    public void deleteEngineByIdDao(Integer id) throws HibernateException {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {

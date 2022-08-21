@@ -14,7 +14,7 @@ public class CarcaseDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<Carcase> getAllDao() throws HibernateException {
+    public List<Carcase> getAllCarcasesDao() throws HibernateException {
         Session session = null;
         List<Carcase> allCarcases = null;
         try {
@@ -30,7 +30,7 @@ public class CarcaseDao {
         return allCarcases;
     }
 
-    public Carcase getByIdDao(Integer id) throws HibernateException {
+    public Carcase getCarcaseByIdDao(Integer id) throws HibernateException {
         Session session = null;
         Query query;
         List<Carcase> carcaseList;
@@ -48,7 +48,7 @@ public class CarcaseDao {
         return carcase;
     }
 
-    public void addDao(Carcase carcase) throws HibernateException {
+    public void addCarcaseDao(Carcase carcase) throws HibernateException {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -61,11 +61,11 @@ public class CarcaseDao {
         }
     }
 
-    public void updateDao(Carcase carcase) throws SQLException {
+    public void updateCarcaseDao(Carcase carcase) throws SQLException {
 
     }
 
-    public void deleteByIdDao(Integer id) throws HibernateException {
+    public void deleteCarcaseByIdDao(Integer id) throws HibernateException {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {
