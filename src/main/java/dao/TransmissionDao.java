@@ -1,12 +1,14 @@
 package dao;
 
 import entity.Transmission;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class TransmissionDao  {
+public class TransmissionDao {
 
     private SessionFactory sessionFactory;
 
@@ -15,8 +17,19 @@ public class TransmissionDao  {
     }
 
 
-    public List<Transmission> getAllDao() {
-        return null;
+    public List<Transmission> getAllDao() throws HibernateException {
+        Session session = null;
+        List<Transmission> allTransmissions = null;
+        try {
+            session = sessionFactory.openSession();
+            allTransmissions = session.createQuery("FROM Transmission").list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return allTransmissions;
     }
 
 

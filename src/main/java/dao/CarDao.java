@@ -1,6 +1,8 @@
 package dao;
 
 import entity.Car;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.sql.SQLException;
@@ -14,8 +16,20 @@ public class CarDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<Car> getAllDao() {
-        return null;
+    public List<Car> getAllDao() throws HibernateException {
+        Session session = null;
+        List<Car> allCars = null;
+        try {
+            session = sessionFactory.openSession();
+
+            allCars = session.createQuery("FROM Car").list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return allCars;
+
     }
 
     public Car getByIdDao(Integer id) throws SQLException {

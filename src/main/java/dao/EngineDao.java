@@ -1,6 +1,8 @@
 package dao;
 
 import entity.Engine;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.sql.SQLException;
@@ -14,8 +16,20 @@ public class EngineDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<Engine> getAllDao() {
-        return null;
+    public List<Engine> getAllDao() throws HibernateException {
+        Session session = null;
+        List<Engine> allEngines = null;
+        try {
+            session = sessionFactory.openSession();
+
+            allEngines = session.createQuery("FROM Engine").list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return allEngines;
+
     }
 
     public Engine getByIdDao(Integer id) throws SQLException {

@@ -1,6 +1,8 @@
 package dao;
 
 import entity.Carcase;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.sql.SQLException;
@@ -14,8 +16,20 @@ public class CarcaseDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<Carcase> getAllDao() {
-        return null;
+    public List<Carcase> getAllDao() throws HibernateException {
+        Session session = null;
+        List<Carcase> allCarcases = null;
+        try {
+            session = sessionFactory.openSession();
+
+            allCarcases = session.createQuery("FROM Carcase").list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return allCarcases;
     }
 
     public Carcase getByIdDao(Integer id) throws SQLException {
