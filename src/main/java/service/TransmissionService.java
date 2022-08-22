@@ -2,6 +2,7 @@ package service;
 
 import dao.TransmissionDao;
 import entity.Transmission;
+import org.hibernate.HibernateException;
 
 import java.util.List;
 
@@ -16,7 +17,14 @@ public class TransmissionService {
     }
 
     public Transmission getTransmissionById(Integer id) {
+        Transmission transmission = null;
 
+        try {
+            transmission = transmissionDao.getTransmissionByIdDao(id);
+        } catch (HibernateException e){
+            e.printStackTrace();
+        }
+        return transmission;
     }
 
     public List<Transmission> getAllTransmissions() {

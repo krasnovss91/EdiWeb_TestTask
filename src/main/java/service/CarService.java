@@ -2,7 +2,9 @@ package service;
 
 import dao.CarDao;
 import entity.Car;
+import org.hibernate.HibernateException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class CarService {
@@ -17,7 +19,13 @@ public class CarService {
 
 
     public Car getCarById(Integer id) {
-
+        Car car = null;
+        try {
+            car = carDao.getCarByIdDao(id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return car;
     }
 
     public List<Car> getAllCars() {
