@@ -14,7 +14,6 @@ public class CarcaseService {
     public CarcaseService(CarcaseDao carcaseDao) {
         this.carcaseDao = carcaseDao;
     }
-
     public Carcase getCarcaseById(Integer id) {
 
     }
@@ -23,15 +22,15 @@ public class CarcaseService {
 
     }
 
-    public void addCarcase(Carcase carcase) {
+    public void addCar(Carcase carcase) {
 
     }
 
-    public void updateCarcase(Carcase carcase) {
+    public void updateCar(Carcase carcase) {
 
     }
 
-    public void deleteCarcaseById(Carcase carcase) {
+    public void deleteCarById(Carcase carcase) {
 
     }
 }
