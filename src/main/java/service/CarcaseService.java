@@ -28,7 +28,7 @@ public class CarcaseService {
     }
 
     public List<Carcase> getAllCarcases() {
-
+        return carcaseDao.getAllCarcasesDao();
     }
 
     public void addCar(Carcase carcase) {
@@ -43,4 +43,4 @@ public class CarcaseService {
 
     }
 }
-}
+

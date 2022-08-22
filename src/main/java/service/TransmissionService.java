@@ -28,7 +28,7 @@ public class TransmissionService {
     }
 
     public List<Transmission> getAllTransmissions() {
-
+         return transmissionDao.getAllTransmissionsDao();
     }
 
     public void addTransmission(Transmission transmission) {
