@@ -29,18 +29,22 @@ public class CarService {
     }
 
     public List<Car> getAllCars() {
-       return carDao.getAllCarDao();
+        return carDao.getAllCarDao();
     }
 
     public void addCar(Car car) {
-
+        carDao.addCarDao(car);
     }
 
     public void updateCar(Car car) {
-
+        carDao.updateCarDao(car);
     }
 
-    public void deleteCarById(Car car) {
-
+    public void deleteCarById(Integer id) {
+        try {
+            carDao.deleteCarByIdDao(id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
     }
 }

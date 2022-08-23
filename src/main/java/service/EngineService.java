@@ -28,19 +28,23 @@ public class EngineService {
     }
 
     public List<Engine> getAllEngines() {
-       return engineDao.getAllEnginesDao();
+        return engineDao.getAllEnginesDao();
     }
 
     public void addEngine(Engine engine) {
-
+        engineDao.addEngineDao(engine);
     }
 
     public void updateEngine(Engine engine) {
-
+        engineDao.updateEngineDao(engine);
     }
 
-    public void deleteEngineById(Engine engine) {
-
+    public void deleteEngineById(Integer id) {
+        try {
+            engineDao.deleteEngineByIdDao(id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
     }
 }
 

@@ -31,16 +31,20 @@ public class CarcaseService {
         return carcaseDao.getAllCarcasesDao();
     }
 
-    public void addCar(Carcase carcase) {
-
+    public void addCarcase(Carcase carcase) {
+        carcaseDao.addCarcaseDao(carcase);
     }
 
-    public void updateCar(Carcase carcase) {
-
+    public void updateCarcase(Carcase carcase) {
+        carcaseDao.updateCarcaseDao(carcase);
     }
 
-    public void deleteCarById(Carcase carcase) {
-
+    public void deleteCarcaseById(Integer id) {
+        try {
+            carcaseDao.deleteCarcaseByIdDao(id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
     }
 }
 
