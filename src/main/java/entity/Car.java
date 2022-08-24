@@ -17,7 +17,7 @@ public class Car {
     @Id
     @Column(name = "car_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "carcase_id")

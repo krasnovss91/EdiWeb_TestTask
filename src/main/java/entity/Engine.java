@@ -17,7 +17,7 @@ public class Engine {
     @Id
     @Column(name = "engine_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @Column(name = "type")
     private String type;

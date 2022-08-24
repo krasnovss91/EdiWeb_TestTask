@@ -17,7 +17,7 @@ public class Carcase {
     @Id
     @Column(name = "carcase_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @Column(name = "type")
     private String type;

@@ -31,9 +31,11 @@ public class CarService {
         this.carDao = carDao;
     }
 
-
     public void assebmleCar(Carcase carcase, Engine engine, Transmission transmission){
         addCar(new Car(carcase,engine,transmission));//нельзя использовать составляющие больше 1 раза, поэтому после сборки удалить из бд
+        carcaseService.deleteCarcaseById(carcase.getId());
+        engineService.deleteEngineById(engine.getId());
+        transmissionService.deleteTransmissionById(transmission.getId());
     }
 
     public void disassembleCar(Car car){//разберём на составляющие, удалим из бд, а составляющие сохраним
