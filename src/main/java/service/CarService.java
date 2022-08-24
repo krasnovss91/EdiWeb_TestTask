@@ -39,7 +39,10 @@ public class CarService {
     }
 
     public void disassembleCar(Car car){//разберём на составляющие, удалим из бд, а составляющие сохраним
-
+        carcaseService.addCarcase(car.getCarcase());
+        engineService.addEngine(car.getEngine());
+        transmissionService.addTransmission(car.getTransmission());
+        deleteCarById(car.getId());
     }
 
     public Car getCarById(Integer id) {
