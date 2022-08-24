@@ -7,7 +7,6 @@ import entity.Engine;
 import entity.Transmission;
 import org.hibernate.HibernateException;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class CarService {
@@ -22,10 +21,10 @@ public class CarService {
 
 
     public void assebmleCar(Carcase carcase, Engine engine, Transmission transmission){
-        addCar(new Car(carcase,engine,transmission));
+        addCar(new Car(carcase,engine,transmission));//нельзя использовать составляющие больше 1 раза, поэтому после сборки удалить из бд
     }
 
-    public void disassembleCar(Car car){
+    public void disassembleCar(Car car){//разберём на составляющие, удалим из бд, а составляющие сохраним
 
     }
 
