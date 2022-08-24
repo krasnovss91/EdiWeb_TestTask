@@ -1,6 +1,8 @@
 package service;
 
 import dao.TransmissionDao;
+import entity.Carcase;
+import entity.Engine;
 import entity.Transmission;
 import org.hibernate.HibernateException;
 
@@ -46,5 +48,6 @@ public class TransmissionService {
             e.printStackTrace();
         }
     }
+
 }
 

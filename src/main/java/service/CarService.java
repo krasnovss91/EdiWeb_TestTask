@@ -2,6 +2,9 @@ package service;
 
 import dao.CarDao;
 import entity.Car;
+import entity.Carcase;
+import entity.Engine;
+import entity.Transmission;
 import org.hibernate.HibernateException;
 
 import java.sql.SQLException;
@@ -17,6 +20,14 @@ public class CarService {
         this.carDao = carDao;
     }
 
+
+    public void assebmleCar(Carcase carcase, Engine engine, Transmission transmission){
+        addCar(new Car(carcase,engine,transmission));
+    }
+
+    public void disassembleCar(Car car){
+
+    }
 
     public Car getCarById(Integer id) {
         Car car = null;

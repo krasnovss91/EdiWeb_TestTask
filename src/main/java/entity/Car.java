@@ -30,4 +30,10 @@ public class Car {
     @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "transmission_id")
     private Transmission transmission;
+
+    public Car(Carcase carcase, Engine engine, Transmission transmission) {
+        this.carcase = carcase;
+        this.engine = engine;
+        this.transmission = transmission;
+    }
 }
