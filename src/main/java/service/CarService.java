@@ -7,11 +7,23 @@ import entity.Engine;
 import entity.Transmission;
 import org.hibernate.HibernateException;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import java.util.List;
 
+@Stateless
 public class CarService {
 
     private static CarService carService;
+
+    @EJB
+    private static CarcaseService carcaseService;
+
+    @EJB
+    private static EngineService engineService;
+
+    @EJB
+    private static TransmissionService transmissionService;
 
     private CarDao carDao;
 

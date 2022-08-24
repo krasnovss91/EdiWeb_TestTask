@@ -4,8 +4,10 @@ import dao.TransmissionDao;
 import entity.Transmission;
 import org.hibernate.HibernateException;
 
+import javax.ejb.Stateless;
 import java.util.List;
 
+@Stateless
 public class TransmissionService {
 
     private static TransmissionService transmissionService;

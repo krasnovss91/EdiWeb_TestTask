@@ -4,8 +4,10 @@ import dao.EngineDao;
 import entity.Engine;
 import org.hibernate.HibernateException;
 
+import javax.ejb.Stateless;
 import java.util.List;
 
+@Stateless
 public class EngineService {
 
     private static EngineService engineService;

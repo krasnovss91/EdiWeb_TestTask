@@ -4,8 +4,10 @@ import dao.CarcaseDao;
 import entity.Carcase;
 import org.hibernate.HibernateException;
 
+import javax.ejb.Stateless;
 import java.util.List;
 
+@Stateless
 public class CarcaseService {
 
     private static CarcaseService carcaseService;
