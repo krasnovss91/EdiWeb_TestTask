@@ -30,7 +30,7 @@ public class CarService {
     public CarService(CarDao carDao) {
         this.carDao = carDao;
     }
-
+//https://tomee.apache.org/examples-trunk/rest-on-ejb/
     public void assebmleCar(Carcase carcase, Engine engine, Transmission transmission){
         addCar(new Car(carcase,engine,transmission));//нельзя использовать составляющие больше 1 раза, поэтому после сборки удалить из бд
         carcaseService.deleteCarcaseById(carcase.getId());
